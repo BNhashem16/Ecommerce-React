@@ -3,7 +3,9 @@
     "baseUrl": "./src",
     "paths": {
         "@components/*": ["src/components/*"],
-        "@layout/*": ["src/layout/*"]
+        "@layout/*": ["src/layout/*"],
+        "@context/*": ["src/context/*"],
+        "@services/*": ["src/services/*"]
     }
   },
   "include": ["src"]

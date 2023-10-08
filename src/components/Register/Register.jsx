@@ -6,10 +6,13 @@ import PasswordInputLayout from 'layout/PasswordInputLayout/PasswordInputLayout'
 import PhoneInputLayout from 'layout/PhoneInputLayout/PhoneInputLayout'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import axios from 'axios'
+import { register } from 'services/AxiosInstance'
 
 const Register = () => {
-  function handleSubmit(values) {
-    console.log(values)
+  async function handleSubmit(values) {
+    let result = await register(values)
+    console.log(result)
   }
   let form = useFormik({
     initialValues: {

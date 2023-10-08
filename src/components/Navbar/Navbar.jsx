@@ -1,4 +1,5 @@
-import React from 'react'
+import { CounterContextProvider } from 'context/CounterContext';
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
