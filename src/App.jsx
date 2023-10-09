@@ -4,20 +4,22 @@ import MainLayout from 'layout/Main/MainLayout';
 import Register from 'components/Register/Register';
 import Cart from 'components/Cart/Cart';
 import NotFound from 'components/NotFound';
-import { CounterContextProvider } from 'context/CounterContext';
+import Login from 'components/Login/Login';
+import { TokenContextProvider } from 'context/TokenContext';
 
 function App() {
   return (
-    <CounterContextProvider>
+      <TokenContextProvider>
       <Routes>
         <Route path="" element={<MainLayout />}>
           {/* <Route index element={<FeaturedProductComponent />} /> */}
           <Route path="register" element={<Register />} />
+          <Route path="login" element={<Login />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
-    </CounterContextProvider>
+      </TokenContextProvider>
   )
 }
 

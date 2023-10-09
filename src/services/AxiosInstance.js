@@ -12,4 +12,4 @@ const instance = axios.create({
 export default instance;
 
 export const register = (data) => instance.post('/auth/signup', data);
-// export const postsEndpoint = '/posts';
+export const login = (data) => instance.post('/auth/signin', data);
