@@ -2,9 +2,9 @@ import { CounterContextProvider } from 'context/CounterContext'
 import { tokenContext } from 'context/TokenContext'
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { register } from 'services/AxiosInstance'
 const Navbar = () => {
-  let { token } = useContext(tokenContext)
-  console.log(token)
+  let { token, logout } = useContext(tokenContext)
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -19,18 +19,13 @@ const Navbar = () => {
             {token && (
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
-                  <a className="nav-link active" aria-current="page">
+                  <Link to={'/'} className="nav-link active" aria-current="page">
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="cart" className="nav-link">
                     Cart
-                  </Link>
-                </li>
-                <li className="nav-item">
-                  <Link to="register" className="nav-link">
-                    Register
                   </Link>
                 </li>
               </ul>
@@ -50,17 +45,19 @@ const Navbar = () => {
                 <i className="mx-2 fa-brands fa-twitter"></i>
               </li>
               {token ? (
-                           <li className="mx-2">
-                           <div>Logout</div>
-                         </li>
+                <li className="mx-2">
+                  <div>
+                    <button onClick={logout}>Logout</button>
+                  </div>
+                </li>
               ) : (
                 <>
                   <li className="mx-2">
-                    <div>Register</div>
+                    <Link to={'register'} >Register</Link>
                   </li>
 
                   <li className="mx-2">
-                    <div>Login</div>
+                  <Link to={'login'} >Login</Link>
                   </li>
                 </>
               )}
