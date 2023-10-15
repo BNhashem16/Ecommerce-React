@@ -8,6 +8,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { BrowserRouter } from 'react-router-dom';
 import { NavigationProvider } from 'layout/Main/NavigationContext';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

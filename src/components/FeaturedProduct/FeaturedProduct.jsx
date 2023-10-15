@@ -19,15 +19,22 @@ const FeaturedProduct = () => {
         <div className="row">
           {products.map((product) => {
             return (
-              <div className="col-md-3">
-                <div className="card">
-                  <img src={product.image} className="card-img-top" alt="..." />
+              <div className="col-md-2">
+                <div className="inner product">
+                  <img src={product.imageCover} className="card-img-top w-100" alt="..." />
                   <div className="card-body">
-                    <h5 className="card-title">{product.name}</h5>
-                    <p className="card-text">{product.description}</p>
-                    <a href="#" className="btn btn-primary">
-                      Add to Cart
-                    </a>
+                    <h4 className="text-main h6 my-2">{product.category.name}</h4>
+                    <h4 className="text-main h6 my-2">{product.title.split(" ", 2).join(" ")}</h4>
+                    <div className="d-flex justify-content-between">
+                      <small className=" col-6">{product.price}</small>
+                      <small className=" col-6">
+                        <i className="fas fa-star text-warning"></i>
+                        {product.ratingsAverage}
+                      </small>
+                    </div>
+                    
+                    <button className="btn btn-main btn-block mt-2">Add to cart</button>
+
                   </div>
                 </div>
               </div>
