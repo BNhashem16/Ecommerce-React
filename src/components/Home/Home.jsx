@@ -6,7 +6,7 @@ import MainSlider from 'components/MainSlider/MainSlider'
 const Home = () => {
   return (
     <>
-    <div>
+    <div className='container'>
       <MainSlider />
       <FeaturedProduct />
     </div>

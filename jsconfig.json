@@ -8,6 +8,6 @@
         "@services/*": ["src/services/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "public"]
 
 }
