@@ -14,3 +14,4 @@ export default instance;
 export const register = (data) => instance.post('/auth/signup', data);
 export const login = (data) => instance.post('/auth/signin', data);
 export const getProducts = () => instance.get('/products');
+export const getAllCategories = () => instance.get('/categories');
