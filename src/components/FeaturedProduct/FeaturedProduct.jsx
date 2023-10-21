@@ -3,24 +3,29 @@ import styles from './FeaturedProduct.module.css'
 import { getProducts } from 'services/AxiosInstance'
 import { BeatLoader } from 'react-spinners'
 import { Link } from 'react-router-dom'
+import { useQuery } from 'react-query'
 
 const FeaturedProduct = () => {
-  const [products, setProducts] = useState([])
-  async function getAllProducts() {
-    let { data } = await getProducts()
-    setProducts(data.data)
-  }
+  // const [products, setProducts] = useState([])
+  // async function getAllProducts() {
+  //   let { data } = await getProducts()
+  //   setProducts(data.data)
+  // }
 
-  useEffect(() => {
-    getAllProducts()
-  }, [])
+  // useEffect(() => {
+  //   getAllProducts()
+  // }, [])
+
+  let { isLoading, isError, data } = useQuery('featuredProducts', getProducts)
+  let products = data?.data?.data
 
   return (
     <>
       <div className="container">
         <div className="row">
     
-          {products.length > 0 ? products.map((product) => {
+          {
+            products && products.length > 0 ? products.map((product) => {
             return (
               <div className="col-md-2" key={product._id}>
                 <Link className='text-decoration-none' to={
