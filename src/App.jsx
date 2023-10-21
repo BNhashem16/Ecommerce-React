@@ -9,6 +9,7 @@ import Product from 'components/Product/Product'
 import NotFound from 'components/NotFound/NotFound'
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
 import Home from 'components/Home/Home'
+import ProductDetail from 'components/ProductDetail/ProductDetail'
 
 function App() {
   return (
@@ -41,6 +42,13 @@ function App() {
               <ProtectedRoute>
                 <Product />
               </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="product/:id"
+            element={
+                <ProductDetail />
             }
           />
 

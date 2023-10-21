@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './FeaturedProduct.module.css'
 import { getProducts } from 'services/AxiosInstance'
+import { BeatLoader } from 'react-spinners'
+import { Link } from 'react-router-dom'
 
 const FeaturedProduct = () => {
   const [products, setProducts] = useState([])
@@ -17,9 +19,18 @@ const FeaturedProduct = () => {
     <>
       <div className="container">
         <div className="row">
-          {products.map((product) => {
+    
+          {products.length > 0 ? products.map((product) => {
             return (
-              <div className="col-md-2">
+              <div className="col-md-2" key={product._id}>
+                <Link className='text-decoration-none' to={
+                  {
+                    pathname: `/product/${product._id}`,
+                    state: {
+                      product: product
+                    }
+                  }
+                }>
                 <div className="inner product">
                   <img src={product.imageCover} className="card-img-top w-100" alt="..." />
                   <div className="card-body">
@@ -37,9 +48,16 @@ const FeaturedProduct = () => {
 
                   </div>
                 </div>
+                </Link>
+                
               </div>
             )
-          })}
+          }) : 
+          <div className="d-flex justify-content-center col-md-12">
+              <BeatLoader color="#36d7b7" />
+
+          </div>
+          }
         </div>
       </div>
     </>
