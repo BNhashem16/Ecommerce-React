@@ -1,3 +1,4 @@
+import CategorySlider from 'components/CategorySlider/CategorySlider'
 import Navbar from 'components/Navbar/Navbar'
 import { tokenContext } from 'context/TokenContext'
 import React, { useContext } from 'react'

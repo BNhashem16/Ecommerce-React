@@ -10,10 +10,16 @@ import NotFound from 'components/NotFound/NotFound'
 import ProtectedRoute from 'components/ProtectedRoute/ProtectedRoute'
 import Home from 'components/Home/Home'
 import ProductDetail from 'components/ProductDetail/ProductDetail'
+import { CartContextProvider } from 'context/CartContext'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
+    
     <TokenContextProvider>
+      <CartContextProvider>
+      <ToastContainer />
       <Routes>
         <Route path="" element={<MainLayout />}>
           {/* <Route index element={<FeaturedProductComponent />} /> */}
@@ -55,6 +61,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      </CartContextProvider>
     </TokenContextProvider>
   )
 }

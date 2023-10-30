@@ -1,18 +1,32 @@
-import axios from 'axios';
+import axios from 'axios'
 
-const instance = axios.create({
-  baseURL: 'https://ecommerce.routemisr.com/api/v1/', // Your API base URL
-  timeout: 10000, // Set a timeout for requests (optional)
+const BASE_URL = 'https://ecommerce.routemisr.com/api/v1/'
+
+const HEADERS = {
+  'Content-Type': 'application/json',
+}
+
+const userToken = localStorage.getItem('token')
+
+const authenticatedAxios = axios.create({
+  baseURL: BASE_URL,
   headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
+    ...HEADERS,
+    token: `${userToken}`,
   },
-});
+})
 
-export default instance;
+const guestAxios = axios.create({
+  baseURL: BASE_URL,
+  headers: HEADERS,
+})
 
-export const register = (data) => instance.post('/auth/signup', data);
-export const login = (data) => instance.post('/auth/signin', data);
-export const getProducts = () => instance.get('/products');
-export const showProduct = (product) => instance.get(`/products/${product}`);
-export const getAllCategories = () => instance.get('/categories');
+export { authenticatedAxios, guestAxios }
+
+export const register = (data) => guestAxios.post('/auth/signup', data)
+export const login = (data) => guestAxios.post('/auth/signin', data)
+export const getProducts = () => guestAxios.get('/products')
+export const showProduct = (product) => guestAxios.get(`/products/${product}`)
+export const getAllCategories = () => guestAxios.get('/categories')
+
+export const addToCartRoute = (data) => authenticatedAxios.post('/cart', data)
