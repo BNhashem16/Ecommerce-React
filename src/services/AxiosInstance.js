@@ -30,3 +30,4 @@ export const showProduct = (product) => guestAxios.get(`/products/${product}`)
 export const getAllCategories = () => guestAxios.get('/categories')
 
 export const addToCartRoute = (data) => authenticatedAxios.post('/cart', data)
+export const getCartRoute = () => authenticatedAxios.get('/cart' )
